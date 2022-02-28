@@ -13,35 +13,7 @@
 
 </head>
 <body>
-{% comment %} selecting all links in store, for each link in the menu display using an anchor tag(shopify creates menus, handles created in the menu) {% endcomment %}
-{% comment %} if link exists loop through and create with anchor tag{% endcomment %}
-
-  {% for link in linklists.main-menu.links %}
-    {% assign child_list_handle = link.title | handleize %}
-    {% if linklists[child_list_handle].links != blank %}
-      <a href="{{ link.url }}">{{ link.title }}</a>
-      [{% for childlink in linklists[child_list_handle].links %}
-        <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
-      {% endfor %}]
-    {% else %}
-      <a href="{{ link.url }}">{{ link.title }}</a>
-    {% endif %}
-  {% endfor %}
-
-{% comment %} displays cart{% endcomment %}
-  <a href="/cart">cart</a>
-
-{% comment %}enables a user account if using {% endcomment %}
-  {% if shop.customer_accounts_enabled %}
-    {% if customer %}
-      <a href="/account">account</a>
-      {{ 'log out'  | customer_logout_link }}
-    {% else %}
-      {{ 'log in ' | customer_login_link }}
-      {{ 'register' | customer_register_link }}
-    {% endif %}
-  {% endif %}
-
+{% section 'header'%}
   <main role="main">
     {{ content_for_layout }}
   </main>
