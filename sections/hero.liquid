@@ -1,9 +1,11 @@
 <section class="container py-5">
   <div class="row">
     <div class="col-lg-6 col-md-8 mx-auto">
-      <h1>Example</h1>
-      <p>description</p>
-      <a href="#">shop NOW</a>
+      <h1>{{ section.settings.title }}</h1>
+      <p>{{ section.settings.description }}</p>
+      <a href="{{ section.settings.button_link }}" class="btn btn-secondary">
+        {{ section.settings.button_label }}
+      </a>
     </div>
   </div>
 </section>
@@ -36,12 +38,13 @@
         "type": "url",
         "id": "button_link",
         "label": "Heading Button Link"
+    
     },
     {
         "type": "text",
         "id": "description",
         "default": "example",
-        "label": "heading description"
+        "label": "Heading Description"
     }
 ],
  "presets": [ 
